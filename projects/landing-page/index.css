@@ -1,3 +1,48 @@
-background-color{
-    color: white;
+body{
+    margin: 0px;
+}
+
+.navbar{
+    background-color: #1F2937;
+    display: flex;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.navbar>a{
+    color: #E5E7EB;
+    flex: 1;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar>h2{
+    flex: 2;
+    color: #F9FAF8;
+}
+
+.head{
+    display: flex;
+    flex-direction: column;
+    background-color: #1F2937;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.herotitle{
+    margin: 0px;
+    color: #F9FAF8;
+    font-size: 48px;
+    font-weight: 800;
+    flex: 1 1 auto;
+}
+
+.herosubtext{
+    color: #F9FAF8;
+    flex: 1 1 auto;
+}
+
+.heroimage{
+    flex: 1;
 }

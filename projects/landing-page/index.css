@@ -23,11 +23,18 @@ body{
 }
 
 .head{
-    display: flex;
-    flex-direction: column;
     background-color: #1F2937;
     padding-left: 10%;
     padding-right: 10%;
+    display: flex;
+}
+
+.leftcontainer{
+    flex: 1;
+}
+
+.rightcontainer{
+    flex: 1;
 }
 
 .herotitle{
@@ -35,14 +42,13 @@ body{
     color: #F9FAF8;
     font-size: 48px;
     font-weight: 800;
-    flex: 1 1 auto;
 }
 
 .herosubtext{
     color: #F9FAF8;
-    flex: 1 1 auto;
 }
 
 .heroimage{
-    flex: 1;
+    background-color: grey;
+    color: #F9FAF8;
 }

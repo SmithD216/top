@@ -1,7 +1,10 @@
 body{
     margin: 0px;
 }
-
+.navbar, .head, .mid, .bottom, .footer{
+    padding-left: 10%;
+    padding-right: 10%;
+}
 .navbar{
     background-color: #1F2937;
     display: flex;
@@ -24,8 +27,6 @@ body{
 
 .head{
     background-color: #1F2937;
-    padding-left: 10%;
-    padding-right: 10%;
     display: flex;
 }
 
@@ -51,4 +52,47 @@ body{
 .heroimage{
     background-color: grey;
     color: #F9FAF8;
+}
+
+.mid{
+    display: flex;
+    flex-wrap: wrap;
+}
+.mid img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #3882f6;
+    border-radius: 15px;
+}
+
+.mid p{
+    text-align: center;
+    font-size: 14px;
+}
+.info, .midimage1, .midimage2, .midimage3, .midimage4{
+    flex: 1;
+    padding: 5px;;
+}
+
+.info{
+    flex: 1 0 100%;
+    text-align: center;
+}
+
+.bottom{
+    background: #E5E7EB;
+}
+.bottom p{
+    font-size: 36px;
+    font-style: italic;
+    color: #1F2937;
+    margin: 0px;
+}
+
+.bottom h3{
+    margin: 0px;
+    text-align: end;
 }

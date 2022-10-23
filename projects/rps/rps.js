@@ -1,5 +1,5 @@
-const playerSelection = "paper";
-const computerSelection = getComputerChoice();
+playGame();
+
 function getComputerChoice(){
     let x = Math.floor((Math.random() * 3)+1);
     let result = "";
@@ -16,31 +16,39 @@ function getComputerChoice(){
 function playRound(player, cpu){
     console.log("You picked " + player);
     console.log("The cpu picked " + cpu);
+    let result = "";
     if(player.toLowerCase() == "rock"){
         if(cpu == "rock"){
-            console.log("It's a draw you both picked rock!")
+            result = "It's a draw you both picked rock!";
         }else if(cpu == "paper"){
-            console.log("You lose! Paper beats rock!")
+            result = "You lose! Paper beats rock!"
         }else{
-            console.log("You win! Rock beats scissors!")
+            result = "You win! Rock beats scissors!"
         }
     } else if(player == "paper"){
         if(cpu == "rock"){
-            console.log("You win! Paper beats rock!");
+            result = "You win! Paper beats rock!";
         }else if(cpu == "paper"){
-            console.log("It's a draw you both picked paper!")
+            result = "It's a draw you both picked paper!";
         } else {
-            console.log("You lose! Scissors beats paper!");
+            result = "You lose! Scissors beats paper!";
         }
     } else {
         if(cpu == "rock"){
-            console.log("You lose! Rock beats scissors!");
+            result = "You lose! Rock beats scissors!";
         }else if(cpu == "paper"){
-            console.log("You win! Scissors beats paper!");
+            result = "You win! Scissors beats paper!";
         } else {
-            console.log("It's a draw you both picked scissors!");
+            result = "It's a draw you both picked scissors!";
         }
     }
+    return result;
 }
 
-console.log(playRound(playerSelection, computerSelection));
+function playGame(){
+    for (let i = 0; i < 5; i++) { 
+        let computerSelection = getComputerChoice();
+        const playerSelection = prompt("Choose rock paper or scissors");
+        playRound(playerSelection, computerSelection);
+     }
+}

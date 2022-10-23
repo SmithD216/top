@@ -2,7 +2,7 @@ body{
     margin: 0px;
     font-family: 'Roboto', sans-serif;
 }
-.navbar, .head, .mid, .bottom, .footer{
+.navbar, .head, .mid, .bottom, .lower{
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -121,4 +121,11 @@ body{
     flex: 1;
     margin-top: 35px;
     margin-right: 35px;
+}
+
+footer{
+    background: #1F2937;
+    color: #E5E7EB;
+    text-align: center;
+    padding: 5%;
 }

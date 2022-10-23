@@ -1,5 +1,6 @@
 body{
     margin: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 .navbar, .head, .mid, .bottom, .footer{
     padding-left: 10%;
@@ -74,7 +75,7 @@ body{
 }
 .info, .midimage1, .midimage2, .midimage3, .midimage4{
     flex: 1;
-    padding: 5px;;
+    padding: 5px;
 }
 
 .info{
@@ -95,4 +96,29 @@ body{
 .bottom h3{
     margin: 0px;
     text-align: end;
+}
+
+.calltoaction{
+    background: #3882f6;
+    border-radius: 10px;
+    color: white;
+    margin: 10% 0 10% 0;
+    display: flex;
+}
+
+.actioncontainer{
+    flex: 1;
+    padding: 0px 100px 10px 65px;
+}
+
+.calltoaction>button{
+    color:#E5E7EB;
+    background: #3882f6;
+    border: solid 2px #E5E7EB;
+    border-color: #E5E7EB;
+    border-radius: 10px;
+    height: 30px;
+    flex: 1;
+    margin-top: 35px;
+    margin-right: 35px;
 }

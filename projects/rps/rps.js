@@ -1,6 +1,10 @@
 let playerScore = 0;
 let cpuScore = 0;
-playGame();
+
+const results = document.createElement('div');
+results.classList.add('content');
+results.textContent = 'This is the glorious text-content!';
+document.querySelector('body').appendChild(results);
 
 function getComputerChoice(){
     let x = Math.floor((Math.random() * 3)+1);
@@ -65,7 +69,7 @@ function printScore(player, cpu){
 
 function declareWinner(playerScore, cpuScore){
     if(playerScore > cpuScore){
-        console.log("You wn the whole game!")
+        console.log("You win the whole game!")
     } else if (cpuScore > playerScore){
         console.log("You lose, better luck next time!")
     } else {
@@ -73,11 +77,16 @@ function declareWinner(playerScore, cpuScore){
     }
 }
 
-function playGame(){
-    for (let i = 0; i < 5; i++) { 
-        let computerSelection = getComputerChoice();
-        let playerSelection = prompt("Choose rock paper or scissors");
-        playRound(playerSelection, computerSelection);
-     }
+function playGame(playerSelection){
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
      declareWinner(playerScore, cpuScore);
 }
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+        playGame(button.id);
+    });
+});
+

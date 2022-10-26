@@ -27,3 +27,10 @@ pink.appendChild(head1);
 const innerPara = document.createElement('p');
 innerPara.textContent = "ME TOO!"
 pink.appendChild(innerPara);
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+      alert(button.id);
+    });
+  });

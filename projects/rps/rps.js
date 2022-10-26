@@ -1,9 +1,13 @@
 let playerScore = 0;
 let cpuScore = 0;
 
+const container = document.querySelector('#container');
 const results = document.createElement('div');
+const para = document.createElement('p');
+const finalscore = document.createElement('p');
+container.appendChild(para);
 results.classList.add('content');
-results.textContent = 'This is the glorious text-content!';
+results.textContent = 'The score is 0 - 0';
 document.querySelector('body').appendChild(results);
 
 function getComputerChoice(){
@@ -20,67 +24,68 @@ function getComputerChoice(){
 }
 
 function playRound(player, cpu){
-    console.log("You picked " + player);
-    console.log("The cpu picked " + cpu);
-    let result = "";
     if(player.toLowerCase() == "rock"){
         if(cpu == "rock"){
             playerScore++;
             cpuScore++;
-            result = "It's a draw you both picked rock!";
+            results.textContent =  "It's a draw you both picked rock!";
         }else if(cpu == "paper"){
             cpuScore++;
-            result = "You lose! Paper beats rock!";
+            results.textContent  = "You lose! Paper beats rock!";
         }else{
             playerScore++;
-            result = "You win! Rock beats scissors!";
+            results.textContent = "You win! Rock beats scissors!";
         }
     } else if(player == "paper"){
         if(cpu == "rock"){
             playerScore++;
-            result = "You win! Paper beats rock!";
+            results.textContent =  "You win! Paper beats rock!";
         }else if(cpu == "paper"){
             playerScore++;
             cpuScore++;
-            result = "It's a draw you both picked paper!";
+            results.textContent = "It's a draw you both picked paper!";
         } else {
             cpuScore++;
-            result = "You lose! Scissors beats paper!";
+            results.textContent =  "You lose! Scissors beats paper!";
         }
     } else {
         if(cpu == "rock"){
             cpuScore++;
-            result = "You lose! Rock beats scissors!";
+            results.textContent =  "You lose! Rock beats scissors!";
         }else if(cpu == "paper"){
             playerScore++;
-            result = "You win! Scissors beats paper!";
+            results.textContent =  "You win! Scissors beats paper!";
         } else {
             playerScore++;
             cpuScore++;
-            result = "It's a draw you both picked scissors!";
+            results.textContent =  "It's a draw you both picked scissors!";
         }
     }
-    console.log(result);
     printScore(playerScore, cpuScore);
 }
 function printScore(player, cpu){
-    console.log("The score is " + player + " to the player and " + cpu + " to the cpu");
+    para.textContent = "The score is " + player + " to the player and " + cpu + " to the cpu";
 }
 
 function declareWinner(playerScore, cpuScore){
     if(playerScore > cpuScore){
-        console.log("You win the whole game!")
+        finalscore.textContent = "You win the whole game!";
     } else if (cpuScore > playerScore){
-        console.log("You lose, better luck next time!")
+        finalscore.textContent = "You lose, better luck next time!";
     } else {
-        console.log("It's a draw!");
+        finalscore.textContent = "It's a draw!";
     }
+    results.appendChild(finalscore);
 }
 
 function playGame(playerSelection){
     let computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
-     declareWinner(playerScore, cpuScore);
+    if((playerScore == 5) || (cpuScore == 5)){
+        declareWinner(playerScore, cpuScore);
+        playerScore = 0;
+        cpuScore = 0;
+    }
 }
 
 const buttons = document.querySelectorAll('button');

@@ -1,7 +1,15 @@
 const container = document.querySelector('#container');
 
-function createGrid(width) {
-    let dimensions = Math.trunc((100/width));
+function createGrid() {
+    let width = prompt("Please enter the width of the grid", 16)
+    if(width > 100){
+        alert("Please enter a value less than 100")
+        return
+    } else if(width < 0){
+        alert("Please enter a value greater than 0")
+    }
+    container.innerHTML = "";
+    let dimensions = (100/width);
     for(let i = 0; i < (width ** 2); i++) {
         const pixel = document.createElement('div');
         pixel.setAttribute('style', "flex-basis:" + dimensions + "%; height:" + dimensions + "%;");
@@ -13,4 +21,5 @@ function createGrid(width) {
     }
 }
 
-createGrid(16);
+const button = document.querySelector('#getWidth');
+button.addEventListener('click', createGrid)

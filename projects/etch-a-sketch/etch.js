@@ -14,8 +14,11 @@ function createGrid() {
         let col = document.createElement('div');
         for(let j = 0; j < width; j++){
             let pixel = document.createElement('div');
-            pixel.classList.add('pixel'); //
+            pixel.classList.add('pixel');
             col.appendChild(pixel);
+            pixel.addEventListener('mouseover', function (e) {
+                pixel.style.background = 'black';
+            });
         }
         col.classList.add('col');
         container.appendChild(col);

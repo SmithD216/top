@@ -3,16 +3,21 @@
     height: 500px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;;
 }
 
 .col{
     display: flex;
+    flex-direction: column;
+    flex-basis: -moz-available;
 }
 
 .pixel{
     border: 1px solid #515151;
     background: white;
     flex: 1;
+    flex-direction: row;
+    flex-basis: 10px;
 }
 
 .active{

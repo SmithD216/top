@@ -17,7 +17,7 @@ function createGrid() {
             pixel.classList.add('pixel');
             col.appendChild(pixel);
             pixel.addEventListener('mouseover', function (e) {
-                pixel.style.background = 'black';
+                pixel.style.background = "black";
             });
         }
         col.classList.add('col');

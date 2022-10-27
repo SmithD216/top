@@ -9,15 +9,16 @@ function createGrid() {
         alert("Please enter a value greater than 0")
     }
     container.innerHTML = "";
-    let dimensions = (100/width);
-    for(let i = 0; i < (width ** 2); i++) {
-        const pixel = document.createElement('div');
-        pixel.setAttribute('style', "flex-basis:" + dimensions + "%; height:" + dimensions + "%;");
-        pixel.classList.add('pixel');
-        pixel.addEventListener('mouseover', ()=> {
-            pixel.classList.add('active');
-        });
-        container.appendChild(pixel);
+
+    for(let i = 0; i < width; i++) {
+        let col = document.createElement('div');
+        for(let j = 0; j < width; j++){
+            let pixel = document.createElement('div');
+            pixel.classList.add('pixel'); //
+            col.appendChild(pixel);
+        }
+        col.classList.add('col');
+        container.appendChild(col);
     }
 }
 

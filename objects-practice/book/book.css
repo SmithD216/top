@@ -1,0 +1,7 @@
+#bookForm{
+    display: none;
+}
+
+#bookTable, tr, th{
+    border: 1px solid black;
+}

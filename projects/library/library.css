@@ -22,11 +22,6 @@ body{
     color: white;
 }
 
-#main-table{
-    color: white;
-    width: 100%;
-}
-
-th, td{
-    border: 1px solid white;
+#list-of-books{
+    background-color: rgb(66, 66, 66);
 }

@@ -15,11 +15,24 @@ function addBookToLibrary(event){
 }
 
 function displayLibrary(){
-    listOfBooks.innerHTML = "";
+    table.innerHTML = `
+        <tr>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Pages</th>
+        <th>Read</th>
+        </tr>
+        `;
     for(book of myLibrary){
-        const newDiv = document.createElement('div');
-        newDiv.innerHTML = `Author: ${book.bookAuthor} Title: ${book.bookTitle} Pages: ${book.bookPages} Read: ${book.bookRead}`
-        listOfBooks.appendChild(newDiv);
+        const newRow = table.insertRow()
+        const authorCell = newRow.insertCell(0);
+        authorCell.textContent = book.bookAuthor;
+        const titleCell = newRow.insertCell(1);
+        titleCell.textContent = book.bookTitle;
+        const pagesCell = newRow.insertCell(2);
+        pagesCell.textContent = book.bookPages;
+        const readCell = newRow.insertCell(3);
+        readCell.textContent = book.bookRead;
     }
 }
 
@@ -28,7 +41,6 @@ const author = document.getElementById('book-author');
 const title = document.getElementById('book-title');
 const pages = document.getElementById('book-pages');
 const read = document.getElementById('book-read');
-const listOfBooks = document.getElementById('list-of-books');
 
 const mainButton = document.getElementById('main-btn');
 mainButton.addEventListener('click', addBookToLibrary);

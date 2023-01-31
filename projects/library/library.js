@@ -7,6 +7,14 @@ function Book(author, title, pages, read){
     this.bookRead = read;
 }
 
+Book.prototype.changeRead = function(){
+    if(this.bookRead){
+        this.bookRead = false;
+    } else {
+        this.bookRead = true;
+    }
+}
+
 function addBookToLibrary(event){
     const book = new Book(author.value, title.value, pages.value, read.checked);
     myLibrary.push(book);
@@ -35,16 +43,22 @@ function displayLibrary(){
         pagesCell.textContent = book.bookPages;
         const readCell = newRow.insertCell(3);
         readCell.textContent = book.bookRead;
-        newRow.insertCell(4).innerHTML = "Edit";
+        newRow.insertCell(4).innerHTML = `<button type="button"  data-index = ${index} onclick="editBook(this)">Edit</button>`;
         newRow.insertCell(5).innerHTML = `<button type="button" data-index = ${index} onclick="deleteBook(this)">Delete</button>`;
     }
+}
+
+function editBook(button) {
+    const bookIndex = parseInt(button.dataset.index);
+    const tableIndex = bookIndex + 1;
+    myLibrary[bookIndex].changeRead();
+    table.rows[tableIndex].cells[3].innerHTML = myLibrary[bookIndex].bookRead;
 }
 
 function  deleteBook(button){
     let tableIndex = parseInt(button.dataset.index);
     myLibrary.splice(tableIndex, 1);
     tableIndex = tableIndex + 1;
-    console.log(tableIndex);
     table.deleteRow(tableIndex);
     displayLibrary();
 

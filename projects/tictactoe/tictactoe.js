@@ -28,15 +28,28 @@ const gameBoard = () => {
   return { createBoard };
 };
 
-const players = (symbol) => {
+const player = (symbol) => {
   let turn = false;
   const getSymbol = () => symbol;
+  let score = 0;
 
-  return { turn, getSymbol };
+  return { turn, getSymbol, score };
 };
 
-const gameFlow = () => {};
+function playGame(){
+
+    const player1 = player("x");
+    const player2 = player("O");
+
+
+    const scoreBoard = document.createElement("div");
+    const maincontainer = document.getElementById("main-container");
+    scoreBoard.innerHTML = `<h1>Score X: ${player1.score} | O: ${player2.score} </h1>`
+    maincontainer.appendChild(scoreBoard);
+
+}
 
 const board = gameBoard();
-const game = gameFlow();
+
 board.createBoard();
+playGame();

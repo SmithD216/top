@@ -2,6 +2,7 @@ const player = (symbol) => {
     let turn = true;
     const getSymbol = () => symbol;
     let score = 0;
+    let gameStart = false;
   
     return { turn, getSymbol, score };
   };
@@ -53,10 +54,14 @@ function displayScore(){
 
 function playGame(){
     displayScore();
+    player1.gameStart = true;
     
 }
 
 function squareClick(event){
+    if(!player1.gameStart){
+        return;
+    }
     const markSquare = document.getElementById(event.target.id);
     if (player1.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player1.getSymbol()}</div>`;

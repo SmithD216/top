@@ -58,17 +58,15 @@ function playGame(){
 
 function squareClick(event){
     const markSquare = document.getElementById(event.target.id);
-
-    if (player1.turn){
+    console.log(markSquare.innerHTML);
+    if (player1.turn && (markSquare.innerHTML === "")){
         markSquare.innerText = player1.getSymbol();
         player1.turn = false;
         player2.turn = true;
-    } else if (player2.turn){
+    } else if (player2.turn && (markSquare.innerHTML === "")){
         markSquare.innerText = player2.getSymbol();
         player1.turn = true;
         player2.turn = false;
-    } else {
-        markSquare.innerText = "wat"
     }
    
 

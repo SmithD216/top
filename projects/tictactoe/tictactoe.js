@@ -1,3 +1,5 @@
+const grid = ["X", "O", "X", "X", "O", "X", "O", "X", "O"];
+
 const player = (symbol) => {
     let turn = true;
     const getSymbol = () => symbol;
@@ -10,10 +12,11 @@ const player = (symbol) => {
 const player1 = player("x");
 const player2 = player("O");
 
+
 const gameBoard = () => {
-  const grid = ["X", "O", "X", "X", "O", "X", "O", "X", "O"];
   const createBoard = () => {
         const gameboard = document.getElementById("gameboard");
+        gameboard.innerHTML = "";
         const row1 = document.createElement("div");
         row1.classList.add("row1");
         const row2 = document.createElement("div");
@@ -41,18 +44,17 @@ const gameBoard = () => {
   return { createBoard };
 };
 
-
+const board = gameBoard();
 
 function displayScore(){
-    const scoreBoard = document.createElement("div");
-    const maincontainer = document.getElementById("main-container");
+    const scoreBoard = document.getElementById("scoreboard");
     scoreBoard.innerHTML = `<h1>Score X: ${player1.score} | O: ${player2.score} </h1>`
-    maincontainer.appendChild(scoreBoard);
-    const turnIndicator = document.createElement("div");
-    scoreBoard.appendChild(turnIndicator);
+    const turnIndicator = document.getElementById("turn-indicator");
+    turnIndicator.innerHTML = `<h2>${player1.turn}</h2>`
 }
 
 function playGame(){
+    board.createBoard();
     displayScore();
     player1.gameStart = true;
     
@@ -63,6 +65,11 @@ function squareClick(event){
         return;
     }
     const markSquare = document.getElementById(event.target.id);
+
+    if(markSquare === null){
+        return;
+    }
+
     if (player1.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player1.getSymbol()}</div>`;
         player1.turn = false;
@@ -75,7 +82,3 @@ function squareClick(event){
    
 
 }
-
-const board = gameBoard();
-
-board.createBoard();

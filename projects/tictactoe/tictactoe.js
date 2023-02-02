@@ -1,11 +1,11 @@
 const grid = ["Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y"];
+let turnCount = 0;
 
 const player = (symbol) => {
     let turn = true;
     const getSymbol = () => symbol;
     let score = 0;
     let gameStart = false;
-  
     return { turn, getSymbol, score };
   };
 
@@ -50,7 +50,13 @@ function displayScore(){
     const scoreBoard = document.getElementById("scoreboard");
     scoreBoard.innerHTML = `<h1>Score X: ${player1.score} | O: ${player2.score} </h1>`
     const turnIndicator = document.getElementById("turn-indicator");
-    turnIndicator.innerHTML = `<h2>${player1.turn}</h2>`
+    let playerIndicator = ""
+    if (player1.turn){
+        playerIndicator = "Player One"
+    } else if (player1.turn === false){
+        playerIndicator = "Player Two"
+    }
+    turnIndicator.innerHTML = `<h2>${playerIndicator}</h2>`
 }
 
 function playGame(){
@@ -73,16 +79,13 @@ function squareClick(event){
     if (player1.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player1.getSymbol()}</div>`;
         grid[event.target.dataset.index] = player1.getSymbol();
-        console.log(grid);
         player1.turn = false;
         player2.turn = true;
     } else if (player2.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player2.getSymbol()}</div>`;
         grid[event.target.dataset.index] = player2.getSymbol();
-        console.log(grid);
         player1.turn = true;
         player2.turn = false;
     }
-   
-
+    displayScore();
 } 

@@ -1,4 +1,4 @@
-const grid = ["Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y"];
+const grid = ["Y", "x", "Y", "x", "Y", "x", "Y", "x", "Y"];
 let turnCount = 0;
 
 const player = (symbol) => {
@@ -9,7 +9,7 @@ const player = (symbol) => {
     return { turn, getSymbol, score };
   };
 
-const player1 = player("x");
+const player1 = player("X");
 const player2 = player("O");
 
 
@@ -78,14 +78,83 @@ function squareClick(event){
 
     if (player1.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player1.getSymbol()}</div>`;
-        grid[event.target.dataset.index] = player1.getSymbol();
+        grid[event.target.dataset.index] = 0;
         player1.turn = false;
         player2.turn = true;
+        turnCount++;
     } else if (player2.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player2.getSymbol()}</div>`;
-        grid[event.target.dataset.index] = player2.getSymbol();
+        grid[event.target.dataset.index] = 1;
         player1.turn = true;
         player2.turn = false;
+        turnCount++;
     }
+    
     displayScore();
+    checkWinner();
 } 
+
+function checkWinner(){
+    //Rows
+    if(grid[0] === grid[3] && grid[3] === grid[6]){
+        if(grid[0] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[0] === 1){
+            console.log("Player 2 wins!")
+        }
+    } else if(grid[1] === grid[4] && grid[4] === grid[7]){
+        if(grid[1] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[1] === 1){
+            console.log("Player 2 wins!")
+        }
+    } else if(grid[2] === grid[5] && grid [5] === grid[8]){
+        if(grid[2] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[2] === 1){
+            console.log("Player 2 wins!")
+        }
+    }
+
+    //Columns
+    if(grid[0] === grid[1] && grid[1] === grid[2]){
+        if(grid[0] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[0] === 1){
+            console.log("Player 2 wins!")
+        }
+    } else if(grid[3] === grid[4] && grid[4] === grid[5]){
+        if(grid[1] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[1] === 1){
+            console.log("Player 2 wins!")
+        }
+    } else if(grid[6] === grid[6] && grid [7] === grid[8]){
+        if(grid[2] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[2] === 1){
+            console.log("Player 2 wins!")
+        }
+    }
+
+    //Diagonals
+    if(grid[0] === grid[4] && grid[4] === grid[8]){
+        if(grid[0] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[0] === 1){
+            console.log("Player 2 wins!")
+        }
+    } else if (grid[2] === grid[4] && grid [4] === grid[6]){
+        if(grid[2] === 0){
+            console.log("Player 1 wins!");
+        } else if(grid[2] === 1){
+            console.log("Player 2 wins!")
+        }
+    }
+
+    // Draw
+    if(turnCount === 9){
+        console.log("It was a draw!");
+    }
+
+}

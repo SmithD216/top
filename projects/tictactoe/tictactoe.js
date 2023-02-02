@@ -1,4 +1,4 @@
-const grid = ["X", "O", "X", "X", "O", "X", "O", "X", "O"];
+const grid = ["Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y"];
 
 const player = (symbol) => {
     let turn = true;
@@ -72,10 +72,14 @@ function squareClick(event){
 
     if (player1.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player1.getSymbol()}</div>`;
+        grid[event.target.dataset.index] = player1.getSymbol();
+        console.log(grid);
         player1.turn = false;
         player2.turn = true;
     } else if (player2.turn && (markSquare.innerHTML === "")){
         markSquare.innerHTML = `<div class = "marker">${player2.getSymbol()}</div>`;
+        grid[event.target.dataset.index] = player2.getSymbol();
+        console.log(grid);
         player1.turn = true;
         player2.turn = false;
     }

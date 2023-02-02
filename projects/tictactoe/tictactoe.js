@@ -25,14 +25,14 @@ const gameBoard = () => {
         row3.classList.add("row3");
         for (const [index, value] of grid.entries()) {
             const square = document.createElement('div');
-            square.setAttribute('id', `square-${index}`);
+            square.setAttribute('data-index', `${index}`);
             square.classList.add('square');
             square.addEventListener("click", squareClick);
-            if(square.id == "square-0" || square.id == "square-1" || square.id == "square-2"){
+            if(square.dataset.index == "0" || square.dataset.index == "1" || square.dataset.index == "2"){
                 row1.appendChild(square);
-            } else if (square.id == "square-3" || square.id == "square-4" || square.id == "square-5"){
+            } else if (square.dataset.index == "3" || square.dataset.index == "4" || square.dataset.index == "5"){
                 row2.appendChild(square);
-            } else if (square.id == "square-6" || square.id == "square-7" || square.id == "square-8"){
+            } else if (square.dataset.index == "6" || square.dataset.index == "7" || square.dataset.index == "8"){
                 row3.appendChild(square);
             }
             gameboard.appendChild(row1);
@@ -64,7 +64,7 @@ function squareClick(event){
     if(!player1.gameStart){
         return;
     }
-    const markSquare = document.getElementById(event.target.id);
+    const markSquare = event.target;
 
     if(markSquare === null){
         return;
@@ -81,4 +81,4 @@ function squareClick(event){
     }
    
 
-}
+} 
